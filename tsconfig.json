@@ -22,9 +22,6 @@
       "@components/*": [
         "./src/components/*"
       ],
-      "@layouts/*": [
-        "./src/layouts//*"
-      ],
       "@actions/*": [
         "src/store/actions/*"
       ],

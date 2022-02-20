@@ -7,9 +7,15 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
-// import '../scss/bootstrap5.0.2/bootstrap.scss'
 import '../resources/font-awesome6pro/scss/fontawesome.scss'
-// import 'antd/dist/antd.css';
+import '../resources/font-awesome6pro/scss/solid.scss'
+import '../resources/font-awesome6pro/scss/brands.scss'
+import '../resources/font-awesome6pro/scss/regular.scss'
+
+
+// import '../resources/styles/main.css'
+import '../resources/styles/globals.css'
+// import "tailwindcss/tailwind.css";
 
 function App({ Component, pageProps }: AppProps) {
   return (

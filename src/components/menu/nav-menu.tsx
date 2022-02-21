@@ -2,7 +2,7 @@ import { settingActions } from "@actions/exports"
 import { settingSelector } from "@store/slices/setting.slice"
 import { IRoute } from "@utils/routes"
 import { useRouter } from "next/router"
-import { ReactNode, useEffect, useRef, useState } from "react"
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 
@@ -52,9 +52,11 @@ export default function NavMenu({ title, classIcon, items, key, path, id }: IPro
         }
     }, [actived])
 
+    const routePush = useMemo(() => router.push, [])
+
 
     return (
-        <div key={key || ''}>
+        <div key={key || Math.random()}>
             <a
                 role="button"
                 onClick={() => {
@@ -63,10 +65,11 @@ export default function NavMenu({ title, classIcon, items, key, path, id }: IPro
                         setClicked(!clicked)
                     }
                     else {
-                        router.push(path)
+                        router.push('/?tab=', path)
                         dispatch(settingActions.setActiveNav({
                             id,
-                            idChildrent: null
+                            idChildrent: null,
+                            tab: path
                         }))
                     }
                 }}
@@ -88,10 +91,11 @@ export default function NavMenu({ title, classIcon, items, key, path, id }: IPro
                         key={item.path + "__" + index}
                         role="button"
                         onClick={() => {
-                            router.push(path + item.path);
+                            router.push('/?tab='+ path + item.path);
                             dispatch(settingActions.setActiveNav({
                                 id,
-                                idChildrent: item.id
+                                idChildrent: item.id,
+                                tab: path+item.path
                             }))
                         }}
                         className={`text-sm text-slate-300 cursor-pointer hover:text-slate-50 pl-10 capitalize w-full hover:bg-gray-800 rounded-md py-2 px-3 ${activeNav?.idChildrent == item.id && "text-slate-50"}`}

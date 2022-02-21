@@ -5,6 +5,7 @@ import cookie from 'react-cookies'
 interface IActiveNav {
     id: string;
     idChildrent?: string;
+    tab: string;
 }
 
 export interface SettingState {
@@ -18,7 +19,8 @@ export const initialState: SettingState = {
     searchToggle: false,
     activeNav: {
         id: "1",
-        idChildrent: null
+        idChildrent: null,
+        tab: '/dashboard'
     }
 }
 

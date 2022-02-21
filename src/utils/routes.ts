@@ -1,10 +1,13 @@
+import { ReactNode } from "react"
+import DashboardPage from '@components/pages/dashboard'
+import ComponentButtonPage from "@components/pages/components/button"
 
 export interface IRoute{
     id: string;
     name: string;
     path?: string;
     children?: IRoute[];
-    classIcon?: string
+    classIcon?: string;
 }
 
 export interface IRoutes{
@@ -12,11 +15,11 @@ export interface IRoutes{
 }
 
 const routes : IRoutes = {
-    home: {
+    dashboard: {
         id: "1",
         name: "Dashboard",
         path: '/',
-        classIcon: 'fa-regular fa-chart-line'
+        classIcon: 'fa-regular fa-chart-line',
     },
     components: {
         id: "2",
@@ -27,7 +30,7 @@ const routes : IRoutes = {
             {
                 id: "2-1",
                 name: 'Button',
-                path: '/button'
+                path: '/button',
             },
             {
                 id: "2-2",
@@ -38,7 +41,13 @@ const routes : IRoutes = {
     }
 }
 
+const routesPath = {
+    dashboard: '/',
+    componentsButton: '/components/button'
+}
+
 
 export {
-    routes
+    routes,
+    routesPath
 }

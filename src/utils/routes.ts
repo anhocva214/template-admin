@@ -1,6 +1,4 @@
-import { ReactNode } from "react"
-import DashboardPage from '@components/pages/dashboard'
-import ComponentButtonPage from "@components/pages/components/button"
+import Router from 'next/router'
 
 export interface IRoute{
     id: string;
@@ -34,8 +32,8 @@ const routes : IRoutes = {
             },
             {
                 id: "2-2",
-                name: 'Alert',
-                path: '/alert'
+                name: 'Badge',
+                path: '/badge'
             }
         ]   
     }
@@ -43,11 +41,14 @@ const routes : IRoutes = {
 
 const routesPath = {
     dashboard: '/',
-    componentsButton: '/components/button'
+    componentsButton: '/components/button',
+    componentsBadge: '/components/badge'
 }
 
+const routerPush = (path: string) => Router.push('/?tab='+path)
 
 export {
     routes,
-    routesPath
+    routesPath,
+    routerPush
 }

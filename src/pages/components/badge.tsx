@@ -1,4 +1,5 @@
 import Badge from "@components/elements/badge";
+import MainLayout from "@components/layouts/main-layout";
 import WrapperShadow from "@components/wrapper/wrapper-shadow";
 
 
@@ -6,7 +7,7 @@ export default function ComponentBadgePage() {
 
 
     return (
-        <>
+        <MainLayout>
             <WrapperShadow>
                 <h5 className="mb-5 text-lg font-medium text-slate-500">Basic</h5>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -81,6 +82,6 @@ export default function ComponentBadgePage() {
                     </div>
                 </div>
             </WrapperShadow>
-        </>
+        </MainLayout>
     )
 }

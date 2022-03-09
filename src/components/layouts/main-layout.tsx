@@ -2,9 +2,6 @@ import { settingActions } from '@actions/exports';
 import DropdownButton from '@components/button/dropdown-button';
 import SearchTopbar from '@components/input/search-topbar';
 import NavMenu from '@components/menu/nav-menu';
-import ComponentBadgePage from '@components/pages/components/badge';
-import ComponentButtonPage from '@components/pages/components/button';
-import DashboardPage from '@components/pages/dashboard';
 import { settingSelector } from '@store/slices/setting.slice';
 import { routes, routesPath } from '@utils/routes';
 import { useRouter } from 'next/router';
@@ -14,9 +11,10 @@ import RouteSwitch from './route-switch';
 
 
 interface IProps {
+    children: ReactNode
 }
 
-export default function MainLayout({ }: IProps) {
+export default function MainLayout({children}: IProps) {
     const dispatch = useDispatch()
     const router = useRouter()
 
@@ -25,11 +23,11 @@ export default function MainLayout({ }: IProps) {
     
 
     useEffect(() => {
-        // let pathname = window.location.pathname;
-        const urlParams = new URLSearchParams(window.location.search);
-        const tab = urlParams.get('tab');
+        let pathname = window.location.pathname;
+        // const urlParams = new URLSearchParams(window.location.search);
+        // const tab = urlParams.get('tab');
 
-        if (!tab) dispatch(settingActions.setActiveNav({
+        if (!pathname) dispatch(settingActions.setActiveNav({
             id: '1',
             idChildrent: null,
             tab: '/'
@@ -38,20 +36,20 @@ export default function MainLayout({ }: IProps) {
         Object.values(routes).forEach(item => {
             if (item?.children?.length > 0) {
                 item.children.forEach(itemChild => {
-                    if (item.path + itemChild.path == tab) {
+                    if (item.path + itemChild.path == pathname) {
                         dispatch(settingActions.setActiveNav({
                             id: item.id,
                             idChildrent: itemChild.id,
-                            tab
+                            tab: pathname
                         }))
                     }
                 })
             }
-            else if (item.path == tab) {
+            else if (item.path == pathname) {
                 dispatch(settingActions.setActiveNav({
                     id: item.id,
                     idChildrent: null,
-                    tab
+                    tab: pathname
                 }))
             }
         })
@@ -76,7 +74,7 @@ export default function MainLayout({ }: IProps) {
 
     return (
         <div>
-            <div className="flex min-h-screen relative">
+            <div className="flex min-h-screen relative overflow-hidden">
                 {/* Background mobile */}
                 <div onClick={() => dispatch(settingActions.switchSidebarToggle(false))} className={`bg-black/25 w-full h-screen absolute lg:hidden top-0 left-0 ${sidebarToggle ? 'z-40' : '-z-40'}`} />
 
@@ -178,11 +176,8 @@ export default function MainLayout({ }: IProps) {
                             ))}
                         </nav>
                         {/* END BREADCRUMB */}
-
-
-                        <RouteSwitch path={routesPath.dashboard} tab={activeNav.tab} component={(<DashboardPage />)} />
-                        <RouteSwitch path={routesPath.componentsButton} tab={activeNav.tab} component={(<ComponentButtonPage />)} />
-                        <RouteSwitch path={routesPath.componentsBadge} tab={activeNav.tab} component={(<ComponentBadgePage />)} />
+                        
+                        {children}
 
                     </div>
                     {/* END CONTENT */}

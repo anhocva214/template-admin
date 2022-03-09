@@ -34,6 +34,11 @@ const routes : IRoutes = {
                 id: "2-2",
                 name: 'Badge',
                 path: '/badge'
+            },
+            {
+                id: "2-3",
+                name: 'Alert',
+                path: '/alert'
             }
         ]   
     }
@@ -42,7 +47,9 @@ const routes : IRoutes = {
 const routesPath = {
     dashboard: '/',
     componentsButton: '/components/button',
-    componentsBadge: '/components/badge'
+    componentsBadge: '/components/badge',
+    componentsAlert: '/components/alert'
+
 }
 
 const routerPush = (path: string) => Router.push('/?tab='+path)

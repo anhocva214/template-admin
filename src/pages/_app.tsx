@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import store from '@store/index';
-import Alert from 'react-s-alert';
+// import Alert from 'react-s-alert';
 
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
@@ -15,6 +15,7 @@ import '../resources/font-awesome6pro/scss/regular.scss'
 
 // import '../resources/styles/main.css'
 import '../resources/styles/globals.css'
+import Toast from '@components/toast';
 // import "tailwindcss/tailwind.css";
 
 function App({ Component, pageProps }: AppProps) {
@@ -37,8 +38,10 @@ function App({ Component, pageProps }: AppProps) {
 
       </Head>
 
-      <Alert stack={{ limit: 3 }} />
+      {/* <Alert stack={{ limit: 3 }} /> */}
+
       <Provider store={store}>
+        <Toast />
         <Component {...pageProps} />
       </Provider>
 

@@ -69,7 +69,7 @@ export default function NavMenu({ title, classIcon, items, key, path, id }: IPro
                         setClicked(!clicked)
                     }
                     else {
-                        routerPush(path)
+                        router.push(path)
                         dispatch(settingActions.setActiveNav({
                             id,
                             idChildrent: null,
@@ -95,7 +95,7 @@ export default function NavMenu({ title, classIcon, items, key, path, id }: IPro
                         key={item.path + "__" + index}
                         role="button"
                         onClick={() => {
-                            routerPush( path + item.path)
+                            router.push(path + item.path)
                             dispatch(settingActions.setActiveNav({
                                 id,
                                 idChildrent: item.id,

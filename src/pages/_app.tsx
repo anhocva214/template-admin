@@ -7,10 +7,7 @@ import store from '@store/index';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
-import '../resources/font-awesome6pro/scss/fontawesome.scss'
-import '../resources/font-awesome6pro/scss/solid.scss'
-import '../resources/font-awesome6pro/scss/brands.scss'
-import '../resources/font-awesome6pro/scss/regular.scss'
+import '../resources/font-awesome6pro/css/all.min.css'
 
 
 // import '../resources/styles/main.css'

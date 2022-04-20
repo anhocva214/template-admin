@@ -11,12 +11,12 @@ interface IProps {
     title: string,
     classIcon: string,
     items?: IRoute[],
-    key?: any,
+    // key?: any,
     path: string,
     id: string
 }
 
-export default function NavMenu({ title, classIcon, items, key, path, id }: IProps) {
+export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
 
     const HEIGHT_CONTENT_ITEM = 36
     const router = useRouter()
@@ -60,7 +60,7 @@ export default function NavMenu({ title, classIcon, items, key, path, id }: IPro
 
 
     return (
-        <div key={key || 'Math.random()'}>
+        <div>
             <a
                 role="button"
                 onClick={() => {

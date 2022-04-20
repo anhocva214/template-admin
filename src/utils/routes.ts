@@ -39,6 +39,11 @@ const routes : IRoutes = {
                 id: "2-3",
                 name: 'Alert',
                 path: '/alert'
+            },
+            {
+                id: "2-4",
+                name: 'Accordion',
+                path: '/accordion'
             }
         ]   
     }

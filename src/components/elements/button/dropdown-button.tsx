@@ -4,7 +4,8 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface IProps {
     button: ReactNode,
-    dropdownContent: ReactNode
+    dropdownContent: ReactNode,
+    contentClass?: string
 }
 
 // function useOutsideAlerter(ref) {
@@ -29,7 +30,7 @@ interface IProps {
 
 
 
-export default function DropdownButton({button, dropdownContent}: IProps) {
+export default function DropdownButton({button, dropdownContent, contentClass}: IProps) {
 
     const [clicked, setClicked] = useState(false)
 
@@ -44,7 +45,7 @@ export default function DropdownButton({button, dropdownContent}: IProps) {
                 {button}
             </a>
 
-            <div className={`absolute top-full right-0 transiton-all duration-300 ${clicked?"opacity-1 visible translate-y-1":"translate-y-5 invisible opacity-0"}`}>
+            <div className={`absolute top-full ${contentClass || 'right-0'} transiton-all duration-300 ${clicked?"opacity-1 visible translate-y-1":"translate-y-5 invisible opacity-0"}`}>
                 {dropdownContent}   
             </div>
         </div>

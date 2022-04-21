@@ -7,6 +7,7 @@ import { routes, routesPath } from '@utils/routes';
 import { useRouter } from 'next/router';
 import React, { createElement, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { RotateSpinner, SwishSpinner } from 'react-spinners-kit';
 import RouteSwitch from './route-switch';
 
 
@@ -14,13 +15,14 @@ interface IProps {
     children: ReactNode
 }
 
-export default function MainLayout({children}: IProps) {
+export default function MainLayout({ children }: IProps) {
     const dispatch = useDispatch()
     const router = useRouter()
 
     const { sidebarToggle, activeNav } = useSelector(settingSelector)
     const [tabName, setTabName] = useState([])
-    
+    const [loadingPage, setLoadingPage] = useState(false)
+
 
     useEffect(() => {
         let pathname = window.location.pathname;
@@ -56,63 +58,42 @@ export default function MainLayout({children}: IProps) {
     }, [])
 
     useEffect(() => {
+        setLoadingPage(true)
         Object.values(routes).forEach(item => {
-            if (item.id == activeNav.id){
-                if (item?.children?.length>0){
+            if (item.id == activeNav.id) {
+                if (item?.children?.length > 0) {
                     item.children.forEach(itemChild => {
                         if (itemChild.id == activeNav.idChildrent) setTabName([item.name, itemChild.name])
                     })
                 }
-                else{
+                else {
                     setTabName([item.name])
                 }
             }
         })
     }, [activeNav])
 
+    // useEffect(() => {
+    //     // setLoadingPage(true)
+    //     setTimeout(() => {
+    //         setLoadingPage(false)
+    //     }, 1200);
+    // }, [])
 
+    // if (loadingPage) return (
+    //     <div className={`absolute top-0 left-0 bg-white h-screen w-screen flex justify-center items-center bg-gray-900 transition-all duration-500 ${loadingPage?'z-50 opacity-1 visible':'-z-50 opacity-0 invisible'}`}>
+    //             <SwishSpinner size={90} />
+    //         </div>
+    // )
 
     return (
         <div>
+
             <div className="flex min-h-screen relative overflow-hidden">
                 {/* Background mobile */}
                 <div onClick={() => dispatch(settingActions.switchSidebarToggle(false))} className={`bg-black/25 w-full h-screen absolute lg:hidden top-0 left-0 ${sidebarToggle ? 'z-40' : '-z-40'}`} />
-
-                {/* SIDEBAR */}
-                <div className={`w-[250px] bg-gray-900 min-h-screen h-full overflow-y-auto transition-all duration-500 absolute -left-[250px] z-50 lg:left-0 lg:translate-x-0 ${sidebarToggle ? '-left-[250px] translate-x-[250px] z-50 lg:-translate-x-[250px]' : ""}`}>
-                    {/* logo */}
-                    <div className="sticky top-0 bg-gray-900 z-50 h-[60px] flex justify-center">
-                        <h1 className="font-bold uppercase text-center text-lg text-white flex items-center">admin</h1>
-                    </div>
-                    {/* Menu */}
-                    <div className="p-2">
-                        {/* Item */}
-                        {Object.values(routes).map((item, index) => {
-                            if (item?.children?.length > 0) {
-                                return (
-                                    <NavMenu
-                                        key={item.path + "__" + index}
-                                        title={item.name}
-                                        id={item.id}
-                                        path={item.path}
-                                        classIcon={item.classIcon}
-                                        items={item.children}
-                                    />
-                                )
-                            }
-                            else return (
-                                <NavMenu
-                                    id={item.id}
-                                    key={item.path + "__" + index}
-                                    title={item.name}
-                                    path={item.path}
-                                    classIcon={item.classIcon}
-                                />
-                            )
-                        })}
-                    </div>
-                </div>
-                {/* END SIDEBAR */}
+            
+                <SideBar toggle={sidebarToggle} />
 
                 <div className={`w-full pl-0 lg:pl-[250px] transition-all duration-500 bg-gray-100 ${sidebarToggle ? 'pl-0 lg:pl-[0]' : ""}`}>
                     {/* HEADER */}
@@ -176,7 +157,7 @@ export default function MainLayout({children}: IProps) {
                             ))}
                         </nav>
                         {/* END BREADCRUMB */}
-                        
+
                         {children}
 
                     </div>
@@ -189,4 +170,50 @@ export default function MainLayout({children}: IProps) {
 }
 
 
+export const SideBar = React.memo(({
+    toggle
+}: {
+    toggle: boolean
+}) => {
+    
+    return (
+        <>
+            {/* SIDEBAR */}
+            <div className={`w-[250px] bg-gray-900 min-h-screen h-full overflow-y-auto transition-all duration-500 absolute -left-[250px] z-40 lg:left-0 lg:translate-x-0 ${toggle ? '-left-[250px] translate-x-[250px] z-50 lg:-translate-x-[250px]' : ""}`}>
+                {/* logo */}
+                <div className="sticky top-0 bg-gray-900 z-50 h-[60px] flex justify-center">
+                    <h1 className="font-bold uppercase text-center text-lg text-white flex items-center">admin</h1>
+                </div>
+                {/* Menu */}
+                <div className="p-2">
+                    {/* Item */}
+                    {Object.values(routes).map((item, index) => {
+                        if (item?.children?.length > 0) {
+                            return (
+                                <NavMenu
+                                    key={item.path + "__" + index}
+                                    title={item.name}
+                                    id={item.id}
+                                    path={item.path}
+                                    classIcon={item.classIcon}
+                                    items={item.children}
+                                />
+                            )
+                        }
+                        else return (
+                            <NavMenu
+                                id={item.id}
+                                key={item.path + "__" + index}
+                                title={item.name}
+                                path={item.path}
+                                classIcon={item.classIcon}
+                            />
+                        )
+                    })}
+                </div>
+            </div>
+            {/* END SIDEBAR */}
+        </>
+    )
+})
 

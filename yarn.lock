@@ -1447,6 +1447,11 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
+collapsible-react-component@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/collapsible-react-component/-/collapsible-react-component-0.0.5.tgz#f4ee5cfa18224dbd0196d8d1ce3fce3a722bf5e5"
+  integrity sha512-jYKD+LIuboJtSRddkkstc+nkpYGvAr8FAo+vWd+X9A9lpF8LAlHPrd2AfH8Fst+mFynQQx+ahIP8so4MqGdo4A==
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/collection-visit/-/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"

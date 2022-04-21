@@ -1,4 +1,6 @@
 import { ReactNode, useState } from "react"
+import { Collapsible } from 'collapsible-react-component'
+
 
 interface IProps {
     active: boolean,
@@ -22,9 +24,16 @@ export default function AccordionItem({
                     <i className="fa-solid fa-angle-right"></i>
                 </span>
             </a>
-            <div className={`py-2 px-4 transition-all duration-300 ${active ? 'visible opacity-1 h-auto block' : 'h-0 invisible opacity-0 hidden'}`}>
-                {children}
-            </div>
+
+            <Collapsible open={active}>
+                <div className={`py-2 px-4`}>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, sed
+                    labore? Autem laboriosam minima corrupti rem repellat odio reiciendis
+                    nihil! Eum natus dolorem atque blanditiis ipsam aperiam. Voluptatem,
+                    exercitationem fugit.
+                </div>
+
+            </Collapsible>
         </div>
     )
 }

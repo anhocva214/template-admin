@@ -1,8 +1,8 @@
-import { alertActions } from "@actions/exports";
-import { alertSelector } from "@store/slices/alert.slice";
+
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { IAlert } from "src/models/settings/alert";
+import { alertActions, alertSelector } from "src/redux/alert.redux";
 
 interface IProps extends IAlert {
 

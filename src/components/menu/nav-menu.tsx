@@ -1,10 +1,10 @@
-import { settingActions } from "@actions/exports"
-import { settingSelector } from "@store/slices/setting.slice"
+
 import { IRoute, routerPush } from "@utils/routes"
 import { useRouter } from "next/router"
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Collapsible } from 'collapsible-react-component'
+import { settingActions, settingSelector } from "src/redux/setting.redux"
 
 
 interface IProps {

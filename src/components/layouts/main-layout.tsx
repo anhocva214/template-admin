@@ -1,8 +1,6 @@
-import { settingActions } from '@actions/exports';
 import DropdownButton from '@components/elements/button/dropdown-button';
 import SearchTopbar from '@components/input/search-topbar';
 import NavMenu from '@components/menu/nav-menu';
-import { settingSelector } from '@store/slices/setting.slice';
 import { routes, routesPath } from '@utils/routes';
 import { useRouter } from 'next/router';
 import React, { createElement, ReactNode, useEffect, useMemo, useState } from 'react';
@@ -14,6 +12,7 @@ import RouteSwitch from './route-switch';
 import DashboardPage from '@components/pages';
 import ComponentAlertPage from '@components/pages/alert';
 import ComponentAccordionPage from '@components/pages/accordion';
+import { settingActions, settingSelector } from 'src/redux/setting.redux';
 
 
 interface IProps {
@@ -113,7 +112,7 @@ export default function MainLayout({  }: IProps) {
                         </a>
 
                         <div className="pr-6 flex">
-                            <a role="button" onClick={() => dispatch(settingActions.switcSearchToggle(true))} className="hover:bg-gray-300 p-4 rounded-full w-9 h-9 flex justify-center items-center transition-all duration-300">
+                            <a role="button" onClick={() => dispatch(settingActions.switchSearchToggle(true))} className="hover:bg-gray-300 p-4 rounded-full w-9 h-9 flex justify-center items-center transition-all duration-300">
                                 <i className="fa-regular fa-magnifying-glass text-slate-500 text-xl"></i>
                             </a>
                             <div className="mr-3"></div>

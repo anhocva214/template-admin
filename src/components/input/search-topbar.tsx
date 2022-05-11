@@ -1,7 +1,7 @@
-import { settingActions } from "@actions/exports"
-import { settingSelector } from "@store/slices/setting.slice"
+
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { settingActions, settingSelector } from "src/redux/setting.redux"
 
 
 export default function SearchTopbar() {
@@ -15,7 +15,7 @@ export default function SearchTopbar() {
                 <input type="text" className="border-0 focus:border-0 focus:outline-0 ml-2 p-2 w-1/2 text-slate-700 text-sm" placeholder="Searching..." />
             </div>
             <div>
-                <a role="button" onClick={()=> { dispatch(settingActions.switcSearchToggle(false)) }} className="hover:bg-gray-300 p-4 rounded-full w-9 h-9 flex justify-center items-center transition-all duration-300">
+                <a role="button" onClick={()=> { dispatch(settingActions.switchSearchToggle(false)) }} className="hover:bg-gray-300 p-4 rounded-full w-9 h-9 flex justify-center items-center transition-all duration-300">
                     <i className="fa-regular text-lg text-slate-500 fa-xmark"></i>
                 </a>
             </div>

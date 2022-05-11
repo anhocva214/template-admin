@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '@store/reducer'
+import { RootState } from 'src/redux/reducer'
 import { routerPush } from '@utils/routes';
 import Router from 'next/router';
 import cookie from 'react-cookies'
@@ -44,6 +44,13 @@ export const settingSlice = createSlice({
     },
 })
 
-export const sliceActions = settingSlice.actions
 export const settingReducer = settingSlice.reducer
 export const settingSelector = (state: RootState) => state.setting
+const actions = settingSlice.actions
+
+
+export const settingActions = {
+    switchSidebarToggle: actions.switchSidebarToggle,
+    switchSearchToggle: actions.switchSearchToggle,
+    setActiveNav: actions.setActiveNav,
+}

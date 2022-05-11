@@ -8,14 +8,19 @@ import { useRouter } from 'next/router';
 import React, { createElement, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RotateSpinner, SwishSpinner } from 'react-spinners-kit';
+import ComponentBadgePage from '@components/pages/badge';
+import ComponentButtonPage from '@components/pages/button';
 import RouteSwitch from './route-switch';
+import DashboardPage from '@components/pages';
+import ComponentAlertPage from '@components/pages/alert';
+import ComponentAccordionPage from '@components/pages/accordion';
 
 
 interface IProps {
-    children: ReactNode
+    // children: ReactNode
 }
 
-export default function MainLayout({ children }: IProps) {
+export default function MainLayout({  }: IProps) {
     const dispatch = useDispatch()
     const router = useRouter()
 
@@ -158,7 +163,13 @@ export default function MainLayout({ children }: IProps) {
                         </nav>
                         {/* END BREADCRUMB */}
 
-                        {children}
+                        {/* {children} */}
+                        <RouteSwitch path={routesPath.dashboard} tab={activeNav.tab} component={(<DashboardPage />)} />
+                        <RouteSwitch path={routesPath.componentsButton} tab={activeNav.tab} component={(<ComponentButtonPage />)} />
+                        <RouteSwitch path={routesPath.componentsBadge} tab={activeNav.tab} component={(<ComponentBadgePage />)} />
+                        <RouteSwitch path={routesPath.componentsAlert} tab={activeNav.tab} component={(<ComponentAlertPage />)} />
+                        <RouteSwitch path={routesPath.componentsAccordion} tab={activeNav.tab} component={(<ComponentAccordionPage />)} />
+
 
                     </div>
                     {/* END CONTENT */}

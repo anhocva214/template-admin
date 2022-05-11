@@ -2,10 +2,8 @@
 import MainLayout from '@components/layouts/main-layout'
 
 
-export default function DashboardPage() {
+export default function Page() {
     return (
-        <MainLayout>
-            <h1>Dashboard</h1>
-        </MainLayout>
+        <MainLayout/>
     )
 }

@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '@store/reducer'
+import { routerPush } from '@utils/routes';
+import Router from 'next/router';
 import cookie from 'react-cookies'
 
 interface IActiveNav {
@@ -35,7 +37,9 @@ export const settingSlice = createSlice({
             state.searchToggle = payload
         },
         setActiveNav: (state, {payload}: PayloadAction<IActiveNav>) => {
+            // console.log(payload)
             state.activeNav = payload
+            routerPush(payload.tab)
         }
     },
 })

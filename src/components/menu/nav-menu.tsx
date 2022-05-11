@@ -94,7 +94,7 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
                             key={item.path + "__" + index}
                             role="button"
                             onClick={() => {
-                                router.push(path + item.path)
+                                // router.push(path + item.path)
                                 dispatch(settingActions.setActiveNav({
                                     id,
                                     idChildrent: item.id,

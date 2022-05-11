@@ -2,10 +2,10 @@ import Accordion from "@components/elements/accordion";
 import MainLayout from "@components/layouts/main-layout";
 import WrapperShadow from "@components/wrapper/wrapper-shadow";
 
-export default function AccordionComponentPage() {
+export default function ComponentAccordionPage() {
 
     return (
-        <MainLayout>
+        <>
             <WrapperShadow>
                 <h5 className="mb-5 text-lg font-medium text-slate-500">Basic</h5>
 
@@ -28,6 +28,6 @@ export default function AccordionComponentPage() {
 
             </WrapperShadow>
 
-        </MainLayout>
+        </>
     )
 }

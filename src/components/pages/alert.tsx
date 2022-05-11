@@ -11,7 +11,7 @@ export default function ComponentAlertPage() {
 
 
     return (
-        <MainLayout>
+        <>
             <WrapperShadow>
                 <h5 className="mb-5 text-lg font-medium text-slate-500">Basic</h5>
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -64,6 +64,6 @@ export default function ComponentAlertPage() {
                     </div>
                 </div>
             </WrapperShadow>
-        </MainLayout>
+        </>
     )
 }

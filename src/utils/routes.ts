@@ -53,11 +53,19 @@ const routesPath = {
     dashboard: '/',
     componentsButton: '/components/button',
     componentsBadge: '/components/badge',
-    componentsAlert: '/components/alert'
+    componentsAlert: '/components/alert',
+    componentsAccordion: '/components/accordion',
 
 }
 
-const routerPush = (path: string) => Router.push('/?tab='+path)
+const routerPush = (tab: string, tabOptions?: string) => {
+    if (!!tabOptions){
+        Router.push('/?tab='+tab+"&"+tabOptions);
+    }
+    else {
+        Router.push('/?tab='+tab)
+    }
+}
 
 export {
     routes,

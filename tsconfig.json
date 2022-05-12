@@ -23,19 +23,19 @@
         "./src/components/*"
       ],
       "@actions/*": [
-        "src/store/actions/*"
+        "src/redux/actions/*"
       ],
       "@utils/*": [
         "./src/utils/*"
       ],
       "@store/*": [
-        "./src/store/*"
+        "src/redux/*"
       ],
       "@services/*": [
         "./src/services/*"
       ],
       "@slices/*": [
-        "./src/store/slices/*"
+        "src/redux/slices/*"
       ],
       "@apis/*": [
         "./src/apis/*"

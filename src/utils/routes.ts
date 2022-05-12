@@ -34,6 +34,16 @@ const routes : IRoutes = {
                 id: "2-2",
                 name: 'Badge',
                 path: '/badge'
+            },
+            {
+                id: "2-3",
+                name: 'Alert',
+                path: '/alert'
+            },
+            {
+                id: "2-4",
+                name: 'Accordion',
+                path: '/accordion'
             }
         ]   
     }
@@ -42,10 +52,20 @@ const routes : IRoutes = {
 const routesPath = {
     dashboard: '/',
     componentsButton: '/components/button',
-    componentsBadge: '/components/badge'
+    componentsBadge: '/components/badge',
+    componentsAlert: '/components/alert',
+    componentsAccordion: '/components/accordion',
+
 }
 
-const routerPush = (path: string) => Router.push('/?tab='+path)
+const routerPush = (tab: string, tabOptions?: string) => {
+    if (!!tabOptions){
+        Router.push('/?tab='+tab+"&"+tabOptions);
+    }
+    else {
+        Router.push('/?tab='+tab)
+    }
+}
 
 export {
     routes,

@@ -9,7 +9,7 @@ class MyDocument extends Document {
                     {/* Custom fonts for this template*/}
 
                 </Head>
-                <body>
+                <body style={{overflowX: 'hidden'}}>
                     <Main />
                     <NextScript />
 

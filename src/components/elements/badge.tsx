@@ -29,7 +29,7 @@ export default function Badge({
            
             ${rounded?'rounded-full':'rounded-md'}
            
-            ${size == 'xs' ? 'text-xs py-1 px-2' : size == 'sm' ? 'text-sm py-1 px-3' : size == 'lg' ? 'text-lg py-3 px-7' : size == 'xl' ? 'text-xl py-4 px-9' : 'py-2 px-5  text-base'}
+            ${size == 'xs' ? 'text-xs px-2 py-1' : size == 'sm' ? 'text-xs py-1 px-2' : size == 'lg' ? 'text-base py-2 px-3' : size == 'xl' ? 'text-lg py-2 px-3' : 'py-1 px-2  text-sm'}
             ${className}
         `.replaceAll('\n','').trim()}
         >

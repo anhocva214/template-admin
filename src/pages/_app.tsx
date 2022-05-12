@@ -1,21 +1,17 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
-import store from '@store/index';
-import Alert from 'react-s-alert';
+import store from 'src/redux/index';
+// import Alert from 'react-s-alert';
 
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
-import '../resources/font-awesome6pro/scss/fontawesome.scss'
-import '../resources/font-awesome6pro/scss/solid.scss'
-import '../resources/font-awesome6pro/scss/brands.scss'
-import '../resources/font-awesome6pro/scss/regular.scss'
+import '../resources/font-awesome6pro/css/all.min.css'
 
-
-// import '../resources/styles/main.css'
 import '../resources/styles/globals.css'
-// import "tailwindcss/tailwind.css";
+import Toast from '@components/toast';
+import 'collapsible-react-component/dist/index.css'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -37,8 +33,10 @@ function App({ Component, pageProps }: AppProps) {
 
       </Head>
 
-      <Alert stack={{ limit: 3 }} />
+      {/* <Alert stack={{ limit: 3 }} /> */}
+
       <Provider store={store}>
+        <Toast />
         <Component {...pageProps} />
       </Provider>
 

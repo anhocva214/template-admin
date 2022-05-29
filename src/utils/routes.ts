@@ -55,6 +55,7 @@ const routesPath = {
     componentsBadge: '/components/badge',
     componentsAlert: '/components/alert',
     componentsAccordion: '/components/accordion',
+    login: '/login',
 
 }
 

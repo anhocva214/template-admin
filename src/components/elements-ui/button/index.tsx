@@ -43,7 +43,7 @@ export default function Button({
 
             ${className}
         `.replaceAll('\n', '').trim()}
-            disabled={disabled}
+            disabled={disabled || loading}
             onClick={onClick}
         >
             {children}

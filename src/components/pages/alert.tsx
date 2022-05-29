@@ -1,6 +1,5 @@
-import Button from "@components/elements/button";
-import MainLayout from "@components/layouts/main-layout";
-import WrapperShadow from "@components/wrapper/wrapper-shadow";
+import Button from "@components/elements-ui/button";
+import WrapperShadow from "@components/elements-ui/wrapper/wrapper-shadow";
 import { useDispatch } from "react-redux";
 import { alertActions } from "src/redux/alert.redux";
 

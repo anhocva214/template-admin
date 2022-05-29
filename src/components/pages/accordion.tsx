@@ -1,6 +1,6 @@
-import Accordion from "@components/elements/accordion";
+import Accordion from "@components/elements-ui/accordion";
+import WrapperShadow from "@components/elements-ui/wrapper/wrapper-shadow";
 import MainLayout from "@components/layouts/main-layout";
-import WrapperShadow from "@components/wrapper/wrapper-shadow";
 
 export default function ComponentAccordionPage() {
 

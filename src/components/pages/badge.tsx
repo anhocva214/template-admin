@@ -1,6 +1,6 @@
-import Badge from "@components/elements/badge";
+import Badge from "@components/elements-ui/badge";
+import WrapperShadow from "@components/elements-ui/wrapper/wrapper-shadow";
 import MainLayout from "@components/layouts/main-layout";
-import WrapperShadow from "@components/wrapper/wrapper-shadow";
 
 
 export default function ComponentBadgePage() {

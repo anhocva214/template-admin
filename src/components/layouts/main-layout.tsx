@@ -1,6 +1,4 @@
-import DropdownButton from '@components/elements/button/dropdown-button';
-import SearchTopbar from '@components/input/search-topbar';
-import NavMenu from '@components/menu/nav-menu';
+
 import { routes, routesPath } from '@utils/routes';
 import { useRouter } from 'next/router';
 import React, { createElement, ReactNode, useEffect, useMemo, useState } from 'react';
@@ -13,6 +11,9 @@ import DashboardPage from '@components/pages';
 import ComponentAlertPage from '@components/pages/alert';
 import ComponentAccordionPage from '@components/pages/accordion';
 import { settingActions, settingSelector } from 'src/redux/setting.redux';
+import SearchTopbar from '@components/elements-ui/input/search-topbar';
+import DropdownButton from '@components/elements-ui/button/dropdown-button';
+import NavMenu from '@components/elements-ui/menu/nav-menu';
 
 
 interface IProps {

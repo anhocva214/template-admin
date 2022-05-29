@@ -1,7 +1,8 @@
-import Alert from "@components/elements/alert"
-import { alertSelector } from "@store/slices/alert.slice"
+
+import { alertSelector } from "@store/alert.redux"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import Alert from "../alert"
 
 
 export default function Toast() {

@@ -1,15 +1,15 @@
 
-import { routes, routesPath } from '@utils/routes';
+import { routesApp, routesPath } from '@utils/routes';
 import { useRouter } from 'next/router';
 import React, { createElement, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RotateSpinner, SwishSpinner } from 'react-spinners-kit';
-import ComponentBadgePage from '@components/pages/badge';
-import ComponentButtonPage from '@components/pages/button';
+import ComponentBadgePage from '@components/apps/badge';
+import ComponentButtonPage from '@components/apps/button';
 import RouteSwitch from './route-switch';
-import DashboardPage from '@components/pages';
-import ComponentAlertPage from '@components/pages/alert';
-import ComponentAccordionPage from '@components/pages/accordion';
+import DashboardPage from '@components/apps';
+import ComponentAlertPage from '@components/apps/alert';
+import ComponentAccordionPage from '@components/apps/accordion';
 import { settingActions, settingSelector } from 'src/redux/setting.redux';
 import SearchTopbar from '@components/elements-ui/input/search-topbar';
 import DropdownButton from '@components/elements-ui/button/dropdown-button';
@@ -40,7 +40,7 @@ export default function MainLayout({  }: IProps) {
             tab: '/'
         }))
 
-        Object.values(routes).forEach(item => {
+        Object.values(routesApp).forEach(item => {
             if (item?.children?.length > 0) {
                 item.children.forEach(itemChild => {
                     if (item.path + itemChild.path == pathname) {
@@ -64,7 +64,7 @@ export default function MainLayout({  }: IProps) {
 
     useEffect(() => {
         setLoadingPage(true)
-        Object.values(routes).forEach(item => {
+        Object.values(routesApp).forEach(item => {
             if (item.id == activeNav.id) {
                 if (item?.children?.length > 0) {
                     item.children.forEach(itemChild => {
@@ -198,7 +198,7 @@ export const SideBar = React.memo(({
                 {/* Menu */}
                 <div className="p-2">
                     {/* Item */}
-                    {Object.values(routes).map((item, index) => {
+                    {Object.values(routesApp).map((item, index) => {
                         if (item?.children?.length > 0) {
                             return (
                                 <NavMenu

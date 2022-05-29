@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from 'src/redux/reducer'
-import { routerPush } from '@utils/routes';
+import { routerAppPush } from '@utils/routes';
 import Router from 'next/router';
 import cookie from 'react-cookies'
 
@@ -39,7 +39,7 @@ export const settingSlice = createSlice({
         setActiveNav: (state, {payload}: PayloadAction<IActiveNav>) => {
             // console.log(payload)
             state.activeNav = payload
-            routerPush(payload.tab)
+            routerAppPush(payload.tab)
         }
     },
 })

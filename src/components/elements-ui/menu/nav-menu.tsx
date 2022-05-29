@@ -1,5 +1,5 @@
 
-import { IRoute, routerPush } from "@utils/routes"
+import { IRoute, routerAppPush } from "@utils/routes"
 import { useRouter } from "next/router"
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -66,7 +66,7 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
                             setClicked(!clicked)
                     }
                     else {
-                        router.push(path)
+                        // router.push(path)    
                         dispatch(settingActions.setActiveNav({
                             id,
                             idChildrent: null,

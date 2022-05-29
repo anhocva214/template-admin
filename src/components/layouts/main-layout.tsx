@@ -1,19 +1,20 @@
 
-import { routes, routesPath } from '@utils/routes';
+import { routesApp, routesPath } from '@utils/routes';
 import { useRouter } from 'next/router';
 import React, { createElement, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RotateSpinner, SwishSpinner } from 'react-spinners-kit';
-import ComponentBadgePage from '@components/pages/badge';
-import ComponentButtonPage from '@components/pages/button';
+import { RotateSpinner, StageSpinner, SwishSpinner } from 'react-spinners-kit';
+import ComponentBadgePage from '@components/apps/badge';
+import ComponentButtonPage from '@components/apps/button';
 import RouteSwitch from './route-switch';
-import DashboardPage from '@components/pages';
-import ComponentAlertPage from '@components/pages/alert';
-import ComponentAccordionPage from '@components/pages/accordion';
+import DashboardPage from '@components/apps';
+import ComponentAlertPage from '@components/apps/alert';
+import ComponentAccordionPage from '@components/apps/accordion';
 import { settingActions, settingSelector } from 'src/redux/setting.redux';
 import SearchTopbar from '@components/elements-ui/input/search-topbar';
 import DropdownButton from '@components/elements-ui/button/dropdown-button';
 import NavMenu from '@components/elements-ui/menu/nav-menu';
+import { userSelector } from '@store/user.redux';
 
 
 interface IProps {
@@ -25,6 +26,7 @@ export default function MainLayout({  }: IProps) {
     const router = useRouter()
 
     const { sidebarToggle, activeNav } = useSelector(settingSelector)
+    const {isLogged} = useSelector(userSelector)
     const [tabName, setTabName] = useState([])
     const [loadingPage, setLoadingPage] = useState(false)
 
@@ -40,7 +42,7 @@ export default function MainLayout({  }: IProps) {
             tab: '/'
         }))
 
-        Object.values(routes).forEach(item => {
+        Object.values(routesApp).forEach(item => {
             if (item?.children?.length > 0) {
                 item.children.forEach(itemChild => {
                     if (item.path + itemChild.path == pathname) {
@@ -63,8 +65,8 @@ export default function MainLayout({  }: IProps) {
     }, [])
 
     useEffect(() => {
-        setLoadingPage(true)
-        Object.values(routes).forEach(item => {
+        // setLoadingPage(true)
+        Object.values(routesApp).forEach(item => {
             if (item.id == activeNav.id) {
                 if (item?.children?.length > 0) {
                     item.children.forEach(itemChild => {
@@ -78,18 +80,25 @@ export default function MainLayout({  }: IProps) {
         })
     }, [activeNav])
 
-    // useEffect(() => {
-    //     // setLoadingPage(true)
-    //     setTimeout(() => {
-    //         setLoadingPage(false)
-    //     }, 1200);
-    // }, [])
+    useEffect(() => {
+        if (!isLogged) {
+            setTimeout(()=>{
+                router.push(routesPath.login)
+            }, 1000)
+        }
+        else{
+            setLoadingPage(false)
+        }
+    }, [isLogged])
 
-    // if (loadingPage) return (
-    //     <div className={`absolute top-0 left-0 bg-white h-screen w-screen flex justify-center items-center bg-gray-900 transition-all duration-500 ${loadingPage?'z-50 opacity-1 visible':'-z-50 opacity-0 invisible'}`}>
-    //             <SwishSpinner size={90} />
-    //         </div>
-    // )
+    if (!loadingPage && !isLogged) return (
+        <div className="absolute top-0 left-0 w-full h-screen bg-gray-100 flex justify-center items-center">
+            <div className="flex items-center justify-center flex-col">
+                <h4 className="text-lg text-slate-700">Đang xác thực người dùng </h4>
+                <StageSpinner color="#334155" />
+            </div>
+        </div>
+    )
 
     return (
         <div>
@@ -198,7 +207,7 @@ export const SideBar = React.memo(({
                 {/* Menu */}
                 <div className="p-2">
                     {/* Item */}
-                    {Object.values(routes).map((item, index) => {
+                    {Object.values(routesApp).map((item, index) => {
                         if (item?.children?.length > 0) {
                             return (
                                 <NavMenu

@@ -12,7 +12,7 @@ export interface IRoutes{
     [key: string]: IRoute
 }
 
-const routes : IRoutes = {
+const routesApp : IRoutes = {
     dashboard: {
         id: "1",
         name: "Dashboard",
@@ -55,10 +55,11 @@ const routesPath = {
     componentsBadge: '/components/badge',
     componentsAlert: '/components/alert',
     componentsAccordion: '/components/accordion',
+    login: '/login',
 
 }
 
-const routerPush = (tab: string, tabOptions?: string) => {
+const routerAppPush = (tab: string, tabOptions?: string) => {
     if (!!tabOptions){
         Router.push('/?tab='+tab+"&"+tabOptions);
     }
@@ -68,7 +69,7 @@ const routerPush = (tab: string, tabOptions?: string) => {
 }
 
 export {
-    routes,
+    routesApp,
     routesPath,
-    routerPush
+    routerAppPush
 }

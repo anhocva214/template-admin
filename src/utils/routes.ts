@@ -6,6 +6,7 @@ export interface IRoute{
     path?: string;
     children?: IRoute[];
     classIcon?: string;
+    hidden?: boolean;
 }
 
 export interface IRoutes{

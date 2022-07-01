@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from 'src/redux/reducer'
 import Alert from 'react-s-alert';
-import { IAlert } from 'src/models/settings/alert';
+import { IAlert } from 'src/models/setting/alert.model';
 
 export interface AlertState {
    alerts: IAlert[]

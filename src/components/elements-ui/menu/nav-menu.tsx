@@ -39,7 +39,9 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
     }, [clicked])
 
     useEffect(() => {
-        if (activeNav.id == id) setActived(true)
+        // console.log("path: ",path)
+        // console.log("tab: ",activeNav.tab)
+        if (path.length > 1 && activeNav.tab.indexOf(path)>=0) setActived(true)
         else setActived(false)
     }, [activeNav])
 
@@ -68,8 +70,6 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
                     else {
                         // router.push(path)    
                         dispatch(settingActions.setActiveNav({
-                            id,
-                            idChildrent: null,
                             tab: path
                         }))
                     }
@@ -89,19 +89,17 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
 
             <Collapsible open={open}>
                 <div className={`flex flex-col`}>
-                    {items?.map((item, index) => (
+                    {items?.map((item, index) => !item.hidden && (
                         <a
                             key={item.path + "__" + index}
                             role="button"
                             onClick={() => {
                                 // router.push(path + item.path)
                                 dispatch(settingActions.setActiveNav({
-                                    id,
-                                    idChildrent: item.id,
-                                    tab: path + item.path
+                                    tab: item.path
                                 }))
                             }}
-                            className={`text-sm text-slate-300 cursor-pointer lg:hover:text-slate-50 pl-10 capitalize w-full lg:hover:bg-gray-800 rounded-md py-2 px-3 ${activeNav?.idChildrent == item.id && "text-slate-50"}`}
+                            className={`text-sm text-slate-300 cursor-pointer lg:hover:text-slate-50 pl-10 capitalize w-full lg:hover:bg-gray-800 rounded-md py-2 px-3 ${activeNav?.tab == item.path && "text-slate-50"}`}
                         >
                             {item.name}
                         </a>

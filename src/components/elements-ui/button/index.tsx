@@ -1,5 +1,5 @@
 import { ColorsType, getColor } from "@utils/constants";
-import { ReactNode, useState } from "react";
+import { ButtonHTMLAttributes, HTMLAttributes, ReactNode, useState } from "react";
 import { CircleSpinner } from "react-spinners-kit";
 
 interface IProps {
@@ -12,6 +12,7 @@ interface IProps {
     onClick?: () => void,
     className?: string,
     loading?: boolean,
+    typeBtn?: 'button' | 'submit' | 'reset',
 }
 
 export default function Button({
@@ -23,7 +24,8 @@ export default function Button({
     disabled = false,
     onClick,
     className,
-    loading = false
+    loading = false,
+    typeBtn = 'submit'
 }: IProps) {
 
     return (
@@ -45,6 +47,7 @@ export default function Button({
         `.replaceAll('\n', '').trim()}
             disabled={disabled || loading}
             onClick={onClick}
+            type={typeBtn}
         >
             {children}
             {loading && (

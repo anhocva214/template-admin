@@ -64,7 +64,7 @@ export default function Alert({ type = 'primary', message, timeout = null, id }:
             style={{height: active?refWrapper?.current?.offsetHeight==0?'100%':refWrapper?.current?.offsetHeight:0}}
         >
             <div  ref={refWrapper} className={`${type == 'danger' ? 'bg-red-500' : type == 'success' ? 'bg-green-500' : type == 'warning' ? 'bg-amber-500' : 'bg-blue-500'} transition-all duration-300 text-white text-sm w-full sm:w-[300px] rounded-sm shadow-lg flex justify-between ${active ? `translate-x-0` : 'translate-x-full'}`}>
-                <span className="p-3 pr-0">
+                <span className="px-3 py-4 pr-0 first-letter:uppercase font-semibold">
                     {message}
                 </span>
                 <button onClick={() =>{

@@ -28,7 +28,7 @@
       "@utils/*": [
         "./src/utils/*"
       ],
-      "@store/*": [
+      "@redux/*": [
         "src/redux/*"
       ],
       "@services/*": [

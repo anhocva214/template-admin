@@ -5,9 +5,8 @@ import Router from 'next/router';
 import cookie from 'react-cookies'
 
 interface IActiveNav {
-    id: string;
-    idChildrent?: string;
     tab: string;
+    options?: string
 }
 
 export interface SettingState {
@@ -20,8 +19,6 @@ export const initialState: SettingState = {
     sidebarToggle: false,
     searchToggle: false,
     activeNav: {
-        id: "1",
-        idChildrent: null,
         tab: '/dashboard'
     }
 }
@@ -39,7 +36,7 @@ export const settingSlice = createSlice({
         setActiveNav: (state, {payload}: PayloadAction<IActiveNav>) => {
             // console.log(payload)
             state.activeNav = payload
-            routerAppPush(payload.tab)
+            routerAppPush(payload.tab, payload.options)
         }
     },
 })

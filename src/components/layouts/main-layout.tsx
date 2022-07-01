@@ -4,17 +4,17 @@ import { useRouter } from 'next/router';
 import React, { createElement, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RotateSpinner, StageSpinner, SwishSpinner } from 'react-spinners-kit';
-import ComponentBadgePage from '@components/apps/badge';
-import ComponentButtonPage from '@components/apps/button';
 import RouteSwitch from './route-switch';
 import DashboardPage from '@components/apps';
-import ComponentAlertPage from '@components/apps/alert';
-import ComponentAccordionPage from '@components/apps/accordion';
 import { settingActions, settingSelector } from 'src/redux/setting.redux';
 import SearchTopbar from '@components/elements-ui/input/search-topbar';
 import DropdownButton from '@components/elements-ui/button/dropdown-button';
 import NavMenu from '@components/elements-ui/menu/nav-menu';
-import { userSelector } from '@store/user.redux';
+import { userActions, userSelector } from '@redux/user.redux';
+import ComponentButtonPage from '@components/apps/button';
+import ComponentBadgePage from '@components/apps/badge';
+import ComponentAlertPage from '@components/apps/alert';
+import ComponentAccordionPage from '@components/apps/accordion';
 
 
 interface IProps {
@@ -26,72 +26,72 @@ export default function MainLayout({  }: IProps) {
     const router = useRouter()
 
     const { sidebarToggle, activeNav } = useSelector(settingSelector)
-    const {isLogged} = useSelector(userSelector)
+    const {isLogged, isLoadingAuthenticate} = useSelector(userSelector)
     const [tabName, setTabName] = useState([])
     const [loadingPage, setLoadingPage] = useState(false)
 
 
     useEffect(() => {
-        let pathname = window.location.pathname;
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const tab = urlParams.get('tab');
+        const urlParams = new URLSearchParams(window.location.search);
+        const tab = urlParams.get('tab');
+        const options = window.location.search.split("&").slice(1).toString().replaceAll(",", "&")
+        console.log(options)
+        
 
-        if (!pathname) dispatch(settingActions.setActiveNav({
-            id: '1',
-            idChildrent: null,
+        if (!tab) dispatch(settingActions.setActiveNav({
             tab: '/'
         }))
 
         Object.values(routesApp).forEach(item => {
             if (item?.children?.length > 0) {
                 item.children.forEach(itemChild => {
-                    if (item.path + itemChild.path == pathname) {
+                    if (itemChild.path == tab) {
                         dispatch(settingActions.setActiveNav({
-                            id: item.id,
-                            idChildrent: itemChild.id,
-                            tab: pathname
+                            tab,
+                            options
                         }))
+                        // setTabName([item.name, itemChild.name])
                     }
                 })
             }
-            else if (item.path == pathname) {
+            else if (item.path == tab) {
                 dispatch(settingActions.setActiveNav({
-                    id: item.id,
-                    idChildrent: null,
-                    tab: pathname
+                    tab,
+                    options
                 }))
+                // setTabName([item.name])
             }
         })
     }, [])
 
     useEffect(() => {
-        // setLoadingPage(true)
         Object.values(routesApp).forEach(item => {
-            if (item.id == activeNav.id) {
-                if (item?.children?.length > 0) {
-                    item.children.forEach(itemChild => {
-                        if (itemChild.id == activeNav.idChildrent) setTabName([item.name, itemChild.name])
-                    })
-                }
-                else {
-                    setTabName([item.name])
-                }
+            if (item?.children?.length > 0) {
+                item.children.forEach(itemChild => {
+                    if (itemChild.path == activeNav.tab) {
+                        setTabName([item.name, itemChild.name])
+                    }
+                })
+            }
+            else if (item.path == activeNav.tab) {
+                setTabName([item.name])
             }
         })
     }, [activeNav])
 
     useEffect(() => {
-        if (!isLogged) {
-            setTimeout(()=>{
-                router.push(routesPath.login)
-            }, 1000)
-        }
-        else{
-            setLoadingPage(false)
+        if (!isLogged){
+            dispatch(userActions.authenticate())
         }
     }, [isLogged])
 
-    if (!loadingPage && !isLogged) return (
+    // useEffect(()=>{
+    //     const urlParams = new URLSearchParams(window.location.search);
+    //     const tab = urlParams.get('tab');
+    //     console.log(tab)
+    // }, [window.location.search])
+
+    if (isLoadingAuthenticate && !isLogged) return (
         <div className="absolute top-0 left-0 w-full h-screen bg-gray-100 flex justify-center items-center">
             <div className="flex items-center justify-center flex-col">
                 <h4 className="text-lg text-slate-700">Đang xác thực người dùng </h4>
@@ -136,13 +136,13 @@ export default function MainLayout({  }: IProps) {
                                 )}
                                 dropdownContent={(
                                     <div className="bg-white w-[200px] shadow-lg border rounded-md">
-                                        <a role="button" className="py-2 px-4 flex items-center hover:bg-gray-100 transition-all duration-300">
+                                        {/* <a role="button" className="py-2 px-4 flex items-center hover:bg-gray-100 transition-all duration-300">
                                             <span className="mr-4 text-slate-500"><i className="fa-regular fa-user"></i></span>
                                             <span className="capitalize text-sm text-slate-500">
                                                 My profile
                                             </span>
-                                        </a>
-                                        <a role="button" className="py-2 px-4 flex items-center hover:bg-gray-100 transition-all duration-300">
+                                        </a> */}
+                                        <a onClick={() => dispatch(userActions.logout())} role="button" className="py-2 px-4 flex items-center hover:bg-gray-100 transition-all duration-300">
                                             <span className="mr-4 text-slate-500"><i className="fa-regular fa-arrow-right-from-bracket"></i></span>
                                             <span className="capitalize text-sm text-slate-500">
                                                 Logout
@@ -173,12 +173,12 @@ export default function MainLayout({  }: IProps) {
                         {/* END BREADCRUMB */}
 
                         {/* {children} */}
-                        <RouteSwitch path={routesPath.dashboard} tab={activeNav.tab} component={(<DashboardPage />)} />
-                        <RouteSwitch path={routesPath.componentsButton} tab={activeNav.tab} component={(<ComponentButtonPage />)} />
-                        <RouteSwitch path={routesPath.componentsBadge} tab={activeNav.tab} component={(<ComponentBadgePage />)} />
-                        <RouteSwitch path={routesPath.componentsAlert} tab={activeNav.tab} component={(<ComponentAlertPage />)} />
-                        <RouteSwitch path={routesPath.componentsAccordion} tab={activeNav.tab} component={(<ComponentAccordionPage />)} />
-
+                        <RouteSwitch path={routesPath.dashboard} component={(<DashboardPage />)} />
+                        <RouteSwitch path={routesPath.componentsButton} component={(<ComponentButtonPage />)} />
+                        <RouteSwitch path={routesPath.componentsBadge} component={(<ComponentBadgePage />)} />
+                        <RouteSwitch path={routesPath.componentsAlert} component={(<ComponentAlertPage />)} />
+                        <RouteSwitch path={routesPath.componentsAccordion} component={(<ComponentAccordionPage />)} />
+                        
 
                     </div>
                     {/* END CONTENT */}
@@ -202,7 +202,9 @@ export const SideBar = React.memo(({
             <div className={`w-[250px] bg-gray-900 min-h-screen h-full overflow-y-auto transition-all duration-500 absolute -left-[250px] z-40 lg:left-0 lg:translate-x-0 ${toggle ? '-left-[250px] translate-x-[250px] z-50 lg:-translate-x-[250px]' : ""}`}>
                 {/* logo */}
                 <div className="sticky top-0 bg-gray-900 z-50 h-[60px] flex justify-center">
-                    <h1 className="font-bold uppercase text-center text-lg text-white flex items-center">admin</h1>
+                    <h1 className="font-bold uppercase text-center text-lg text-white flex items-center">
+                        Tâm Linh Toàn Thư    
+                    </h1>
                 </div>
                 {/* Menu */}
                 <div className="p-2">
@@ -213,7 +215,7 @@ export const SideBar = React.memo(({
                                 <NavMenu
                                     key={item.path + "__" + index}
                                     title={item.name}
-                                    id={item.id}
+                                    id={item.path}
                                     path={item.path}
                                     classIcon={item.classIcon}
                                     items={item.children}
@@ -222,7 +224,7 @@ export const SideBar = React.memo(({
                         }
                         else return (
                             <NavMenu
-                                id={item.id}
+                                id={item.path}
                                 key={item.path + "__" + index}
                                 title={item.name}
                                 path={item.path}

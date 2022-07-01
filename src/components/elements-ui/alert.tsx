@@ -1,7 +1,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { IAlert } from "src/models/settings/alert";
+import { IAlert } from "src/models/setting/alert.model";
 import { alertActions, alertSelector } from "src/redux/alert.redux";
 
 interface IProps extends IAlert {

@@ -78,12 +78,13 @@ export const actions = userSlice.actions
 const login = (data: UserLogin):AppThunk => async (dispatch) => {
     try{
         dispatch(actions.loadingLogin())
+
         // let response = await userApi.login(data)
         // dispatch(alertActions.success({
         //     message: response.message
         // }))
         // dispatch(actions.loginSuccess(response.user))
-        // cookie.save('access_token', response.token.access_token, {path: '/', maxAge: response.token.expires_in})
+        // cookie.save('access_token', response.token.access_token, {path: '/', maxAge: response.token.expires_in})        
     }
     catch(err){
         console.log(err);
@@ -97,6 +98,8 @@ const authenticate = (): AppThunk => async (dispatch)=>{
         dispatch(actions.loadingAuthenticate())
         // let user = await userApi.authenticate()
         // dispatch(actions.authenticateSuccess(user))
+        dispatch(actions.authenticateFail())
+    
     }
     catch(err){
         console.log(err)

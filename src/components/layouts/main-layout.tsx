@@ -80,9 +80,7 @@ export default function MainLayout({  }: IProps) {
     }, [activeNav])
 
     useEffect(() => {
-        if (!isLogged){
-            dispatch(userActions.authenticate())
-        }
+        dispatch(userActions.authenticate())
     }, [isLogged])
 
     // useEffect(()=>{

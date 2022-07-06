@@ -2,7 +2,7 @@ import Accordion from "@components/elements-ui/accordion";
 import WrapperShadow from "@components/elements-ui/wrapper/wrapper-shadow";
 import MainLayout from "@components/layouts/main-layout";
 
-export default function ComponentAccordionPage() {
+export default function ComponentAccordionApp() {
 
     return (
         <>

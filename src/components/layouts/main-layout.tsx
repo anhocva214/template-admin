@@ -11,10 +11,10 @@ import SearchTopbar from '@components/elements-ui/input/search-topbar';
 import DropdownButton from '@components/elements-ui/button/dropdown-button';
 import NavMenu from '@components/elements-ui/menu/nav-menu';
 import { userActions, userSelector } from '@redux/user.redux';
-import ComponentButtonPage from '@components/apps/button';
-import ComponentBadgePage from '@components/apps/badge';
-import ComponentAlertPage from '@components/apps/alert';
-import ComponentAccordionPage from '@components/apps/accordion';
+import ComponentButtonApp from '@components/apps/button.app';
+import ComponentBadgeApp from '@components/apps/badge.app';
+import ComponentAlertApp from '@components/apps/alert.app';
+import ComponentAccordionApp from '@components/apps/accordion.app';
 
 
 interface IProps {
@@ -172,10 +172,10 @@ export default function MainLayout({  }: IProps) {
 
                         {/* {children} */}
                         <RouteSwitch path={routesPath.dashboard} component={(<DashboardPage />)} />
-                        <RouteSwitch path={routesPath.componentsButton} component={(<DashboardPage />)} />
-                        <RouteSwitch path={routesPath.componentsBadge} component={(<ComponentBadgePage />)} />
-                        <RouteSwitch path={routesPath.componentsAlert} component={(<ComponentAlertPage />)} />
-                        <RouteSwitch path={routesPath.componentsAccordion} component={(<ComponentAccordionPage />)} />
+                        <RouteSwitch path={routesPath.componentsButton} component={(<ComponentButtonApp />)} />
+                        <RouteSwitch path={routesPath.componentsBadge} component={(<ComponentBadgeApp />)} />
+                        <RouteSwitch path={routesPath.componentsAlert} component={(<ComponentAlertApp />)} />
+                        <RouteSwitch path={routesPath.componentsAccordion} component={(<ComponentAccordionApp />)} />
                         
 
                     </div>

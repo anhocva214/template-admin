@@ -18,7 +18,7 @@ export interface UserState {
 }
 
 export const initialState: UserState = {
-    isLogged: false,
+    isLogged: true,
     user: null,
     isLoadingLogin: false,
     errorsValidate: {},
@@ -98,7 +98,7 @@ const authenticate = (): AppThunk => async (dispatch)=>{
         dispatch(actions.loadingAuthenticate())
         // let user = await userApi.authenticate()
         // dispatch(actions.authenticateSuccess(user))
-        dispatch(actions.authenticateFail())
+        // dispatch(actions.authenticateFail())
     
     }
     catch(err){

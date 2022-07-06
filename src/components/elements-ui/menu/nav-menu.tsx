@@ -18,7 +18,6 @@ interface IProps {
 
 export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
 
-    const HEIGHT_CONTENT_ITEM = 36
     const router = useRouter()
     const dispatch = useDispatch()
 

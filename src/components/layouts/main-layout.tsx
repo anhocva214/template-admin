@@ -172,7 +172,7 @@ export default function MainLayout({  }: IProps) {
 
                         {/* {children} */}
                         <RouteSwitch path={routesPath.dashboard} component={(<DashboardPage />)} />
-                        <RouteSwitch path={routesPath.componentsButton} component={(<ComponentButtonPage />)} />
+                        <RouteSwitch path={routesPath.componentsButton} component={(<DashboardPage />)} />
                         <RouteSwitch path={routesPath.componentsBadge} component={(<ComponentBadgePage />)} />
                         <RouteSwitch path={routesPath.componentsAlert} component={(<ComponentAlertPage />)} />
                         <RouteSwitch path={routesPath.componentsAccordion} component={(<ComponentAccordionPage />)} />

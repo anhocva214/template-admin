@@ -15,6 +15,7 @@ import ComponentButtonApp from '@components/apps/button.app';
 import ComponentBadgeApp from '@components/apps/badge.app';
 import ComponentAlertApp from '@components/apps/alert.app';
 import ComponentAccordionApp from '@components/apps/accordion.app';
+import ComponentModalApp from '@components/apps/modal';
 
 
 interface IProps {
@@ -176,6 +177,7 @@ export default function MainLayout({  }: IProps) {
                         <RouteSwitch path={routesPath.componentsBadge} component={(<ComponentBadgeApp />)} />
                         <RouteSwitch path={routesPath.componentsAlert} component={(<ComponentAlertApp />)} />
                         <RouteSwitch path={routesPath.componentsAccordion} component={(<ComponentAccordionApp />)} />
+                        <RouteSwitch path={routesPath.componentsModal} component={(<ComponentModalApp />)} />
                         
 
                     </div>

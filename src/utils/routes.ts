@@ -45,6 +45,11 @@ const routesApp : IRoutes = {
                 id: "2-4",
                 name: 'Accordion',
                 path: '/components/accordion'
+            },
+            {
+                id: "2-5",
+                name: 'Modal',
+                path: '/components/modal'
             }
         ]   
     }
@@ -56,6 +61,7 @@ const routesPath = {
     componentsBadge: '/components/badge',
     componentsAlert: '/components/alert',
     componentsAccordion: '/components/accordion',
+    componentsModal: '/components/modal',
     login: '/login',
 
 }

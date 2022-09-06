@@ -2,7 +2,7 @@ import Button from "@components/elements-ui/button";
 import WrapperShadow from "@components/elements-ui/wrapper/wrapper-shadow";
 
 
-export default function ComponentButtonPage() {
+export default function ComponentButtonApp() {
 
 
     return (

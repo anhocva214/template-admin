@@ -3,7 +3,7 @@ import WrapperShadow from "@components/elements-ui/wrapper/wrapper-shadow";
 import MainLayout from "@components/layouts/main-layout";
 
 
-export default function ComponentBadgePage() {
+export default function ComponentBadgeApp() {
 
 
     return (

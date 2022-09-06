@@ -29,22 +29,27 @@ const routesApp : IRoutes = {
             {
                 id: "2-1",
                 name: 'Button',
-                path: '/button',
+                path: '/components/button',
             },
             {
                 id: "2-2",
                 name: 'Badge',
-                path: '/badge'
+                path: '/components/badge'
             },
             {
                 id: "2-3",
                 name: 'Alert',
-                path: '/alert'
+                path: '/components/alert'
             },
             {
                 id: "2-4",
                 name: 'Accordion',
-                path: '/accordion'
+                path: '/components/accordion'
+            },
+            {
+                id: "2-5",
+                name: 'Modal',
+                path: '/components/modal'
             }
         ]   
     }
@@ -56,6 +61,7 @@ const routesPath = {
     componentsBadge: '/components/badge',
     componentsAlert: '/components/alert',
     componentsAccordion: '/components/accordion',
+    componentsModal: '/components/modal',
     login: '/login',
 
 }

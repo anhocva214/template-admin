@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { alertActions } from "src/redux/alert.redux";
 
 
-export default function ComponentAlertPage() {
+export default function ComponentAlertApp() {
 
     const dispatch = useDispatch()
 

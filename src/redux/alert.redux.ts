@@ -36,7 +36,7 @@ export const alertSlice = createSlice({
                 id,
                 message: payload.message,
                 type: 'primary',
-                timeout: payload.timeout
+                timeout: payload.timeout | 3000
             })
         },
 
@@ -46,7 +46,7 @@ export const alertSlice = createSlice({
                 id,
                 message: payload.message,
                 type: 'success',
-                timeout: payload.timeout
+                timeout: payload.timeout | 3000
             })
         },
 
@@ -56,7 +56,7 @@ export const alertSlice = createSlice({
                 id,
                 message: payload.message,
                 type: 'warning',
-                timeout: payload.timeout
+                timeout: payload.timeout | 3000
             })
         },
 
@@ -66,7 +66,7 @@ export const alertSlice = createSlice({
                 id,
                 message: payload.message,
                 type: 'danger',
-                timeout: payload.timeout
+                timeout: payload.timeout | 3000
             })
         },
 

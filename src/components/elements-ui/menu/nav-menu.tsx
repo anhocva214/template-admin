@@ -38,8 +38,6 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
     }, [clicked])
 
     useEffect(() => {
-        // console.log("path: ",path)
-        // console.log("tab: ",activeNav.tab)
         if (path.length > 1 && activeNav.tab.indexOf(path)>=0) setActived(true)
         else setActived(false)
     }, [activeNav])
@@ -68,9 +66,10 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
                     }
                     else {
                         // router.push(path)    
-                        dispatch(settingActions.setActiveNav({
-                            tab: path
-                        }))
+                        // dispatch(settingActions.setActiveNav({
+                        //     tab: path
+                        // }))
+                        routerAppPush(path)
                     }
                 }}
                 className={`cursor-pointer lg:hover:bg-gray-800 rounded-md py-2 px-3 mb-1 transition-all duration-300 group flex justify-between relative ${!!actived && " bg-gray-800"}`}
@@ -93,10 +92,7 @@ export default function NavMenu({ title, classIcon, items, path, id }: IProps) {
                             key={item.path + "__" + index}
                             role="button"
                             onClick={() => {
-                                // router.push(path + item.path)
-                                dispatch(settingActions.setActiveNav({
-                                    tab: item.path
-                                }))
+                                routerAppPush(item.path)
                             }}
                             className={`text-sm text-slate-300 cursor-pointer lg:hover:text-slate-50 pl-10 capitalize w-full lg:hover:bg-gray-800 rounded-md py-2 px-3 ${activeNav?.tab == item.path && "text-slate-50"}`}
                         >

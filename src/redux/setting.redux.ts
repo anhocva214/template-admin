@@ -36,7 +36,7 @@ export const settingSlice = createSlice({
         setActiveNav: (state, {payload}: PayloadAction<IActiveNav>) => {
             // console.log(payload)
             state.activeNav = payload
-            routerAppPush(payload.tab, payload.options)
+            // routerAppPush(payload.tab, payload.options)
         }
     },
 })

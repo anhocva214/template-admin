@@ -63,7 +63,7 @@ export default function MainLayout({  }: IProps) {
                 // setTabName([item.name])
             }
         })
-    }, [])
+    }, [router])
 
     useEffect(() => {
         Object.values(routesApp).forEach(item => {
@@ -84,11 +84,6 @@ export default function MainLayout({  }: IProps) {
         dispatch(userActions.authenticate())
     }, [isLogged])
 
-    // useEffect(()=>{
-    //     const urlParams = new URLSearchParams(window.location.search);
-    //     const tab = urlParams.get('tab');
-    //     console.log(tab)
-    // }, [window.location.search])
 
     if (isLoadingAuthenticate && !isLogged) return (
         <div className="absolute top-0 left-0 w-full h-screen bg-gray-100 flex justify-center items-center">

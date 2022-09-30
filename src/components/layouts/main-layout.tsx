@@ -23,7 +23,7 @@ interface IProps {
 }
 
 export default function MainLayout({  }: IProps) {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<any>()
     const router = useRouter()
 
     const { sidebarToggle, activeNav } = useSelector(settingSelector)
@@ -98,8 +98,7 @@ export default function MainLayout({  }: IProps) {
             </div>
         </div>
     )
-
-    return (
+    else return (
         <div>
 
             <div className="flex min-h-screen relative overflow-hidden">

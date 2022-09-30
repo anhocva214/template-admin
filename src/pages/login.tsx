@@ -6,7 +6,7 @@ import { UserLogin } from "src/models/user.model";
 
 
 export default function LoginPage(){
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<any>()
     const [form, setForm] = useState<UserLogin>(new UserLogin())
     const {isLoadingLogin} = useSelector(userSelector)
 

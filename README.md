@@ -1,12 +1,5 @@
 # Template Next Js - Typescript
 
-### Features:
-    ✅ Redux
-    ✅ Redux Toolkit
-    ✅ Redux Thunk
-    ✅ Font Awesome 6 Pro
-
-
 ### Install
 ```bash
 yarn install
@@ -25,10 +18,4 @@ yarn build & yarn start
 ### Create a slice (redux toolkit)
 ```bash
 yarn generate slice
-```
-
-### Push git tự động
-Chạy lệnh sau đây:
-```bash
-python push.py
 ```

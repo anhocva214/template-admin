@@ -1,5 +1,5 @@
 import Button from "@components/elements-ui/button";
-import { userActions, userSelector } from "@redux/user.redux";
+import { authActions, authSelector } from "@redux/auth.redux";
 import { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLogin } from "src/models/user.model";
@@ -8,7 +8,7 @@ import { UserLogin } from "src/models/user.model";
 export default function LoginPage(){
     const dispatch = useDispatch<any>()
     const [form, setForm] = useState<UserLogin>(new UserLogin())
-    const {isLoadingLogin} = useSelector(userSelector)
+    const {isLoadingLogin} = useSelector(authSelector)
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
         let temp = {...form}
@@ -18,7 +18,7 @@ export default function LoginPage(){
 
     function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
-        dispatch(userActions.login(form))
+        dispatch(authActions.login(form))
     }
 
     return(

@@ -9,24 +9,22 @@ import cookie from 'react-cookies'
 import { User, UserLogin } from 'src/models/user.model';
 import { IErrorValidator } from 'src/models/error.model';
 
-export interface UserState {
+export interface AuthState {
     isLogged: boolean;
-    user: User;
     isLoadingLogin: boolean;
     errorsValidate: IErrorValidator;
     isLoadingAuthenticate: boolean;
 }
 
-export const initialState: UserState = {
+export const initialState: AuthState = {
     isLogged: true,
-    user: null,
     isLoadingLogin: false,
     errorsValidate: {},
     isLoadingAuthenticate: true
 }
 
-export const userSlice = createSlice({
-    name: 'user',
+export const authSlice = createSlice({
+    name: 'auth',
     initialState,
     reducers: {
         loadingLogin: (state)=>{
@@ -42,7 +40,6 @@ export const userSlice = createSlice({
             state.isLoadingLogin = false;
             state.isLogged = false;
             state.errorsValidate = payload
-            state.user = null
         },
         loadingAuthenticate: (state)=>{
             state.isLoadingAuthenticate = true
@@ -54,22 +51,20 @@ export const userSlice = createSlice({
         },
         authenticateFail: (state)=>{
             state.isLogged = false;
-            state.user = null
             state.isLoadingAuthenticate = false;
             Router.push(routesPath.login)
         },
         logout: (state)=>{
             state.isLogged = false;
-            state.user = null;
             Router.push(routesPath.login)
 
         }
     },
 })
 
-export const userReducer = userSlice.reducer
-export const userSelector = (state: RootState) => state.user
-export const actions = userSlice.actions
+export const authReducer = authSlice.reducer
+export const authSelector = (state: RootState) => state.auth
+export const actions = authSlice.actions
 
 /*--------------------------*/
 /*------- ACTIONS ----------*/
@@ -127,7 +122,7 @@ const logout = (): AppThunk => async (dispatch) => {
     }
 }
 
-export const userActions = {
+export const authActions = {
     login,
     authenticate,
     logout

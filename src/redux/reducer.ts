@@ -1,14 +1,14 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
 /* PLOP_INJECT_IMPORT */
-import { userReducer } from './user.redux';
+import { authReducer } from './auth.redux';
 import { settingReducer } from './setting.redux';
 import {alertReducer} from './alert.redux'
 
 
 const rootReducer = combineReducers({
     /* PLOP_INJECT_USE */
-	user: userReducer,
+	auth: authReducer,
 	setting: settingReducer,
     alert: alertReducer
 })

@@ -10,7 +10,7 @@ import { settingActions, settingSelector } from 'src/redux/setting.redux';
 import SearchTopbar from '@components/elements-ui/input/search-topbar';
 import DropdownButton from '@components/elements-ui/button/dropdown-button';
 import NavMenu from '@components/elements-ui/menu/nav-menu';
-import { userActions, userSelector } from '@redux/user.redux';
+import { authActions, authSelector } from '@redux/auth.redux';
 import ComponentButtonApp from '@components/apps/button.app';
 import ComponentBadgeApp from '@components/apps/badge.app';
 import ComponentAlertApp from '@components/apps/alert.app';
@@ -27,7 +27,7 @@ export default function MainLayout({  }: IProps) {
     const router = useRouter()
 
     const { sidebarToggle, activeNav } = useSelector(settingSelector)
-    const {isLogged, isLoadingAuthenticate} = useSelector(userSelector)
+    const {isLogged, isLoadingAuthenticate} = useSelector(authSelector)
     const [tabName, setTabName] = useState([])
     const [loadingPage, setLoadingPage] = useState(false)
 
@@ -81,7 +81,7 @@ export default function MainLayout({  }: IProps) {
     }, [activeNav])
 
     useEffect(() => {
-        dispatch(userActions.authenticate())
+        dispatch(authActions.authenticate())
     }, [isLogged])
 
 
@@ -135,7 +135,7 @@ export default function MainLayout({  }: IProps) {
                                                 My profile
                                             </span>
                                         </a> */}
-                                        <a onClick={() => dispatch(userActions.logout())} role="button" className="py-2 px-4 flex items-center hover:bg-gray-100 transition-all duration-300">
+                                        <a onClick={() => dispatch(authActions.logout())} role="button" className="py-2 px-4 flex items-center hover:bg-gray-100 transition-all duration-300">
                                             <span className="mr-4 text-slate-500"><i className="fa-regular fa-arrow-right-from-bracket"></i></span>
                                             <span className="capitalize text-sm text-slate-500">
                                                 Logout

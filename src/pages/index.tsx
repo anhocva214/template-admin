@@ -11,7 +11,7 @@ export default function Page() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({req, res}) => {
-    let auth = false
+    let auth = true
     if (auth)
     return { props: { }}
     else return {props: {}, redirect: {destination: '/login'}}

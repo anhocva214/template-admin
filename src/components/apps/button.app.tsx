@@ -1,5 +1,6 @@
 import Button from "@components/elements-ui/button";
 import WrapperShadow from "@components/elements-ui/wrapper/wrapper-shadow";
+import { CircleSpinner } from "react-spinners-kit";
 
 
 export default function ComponentButtonApp() {
@@ -34,6 +35,13 @@ export default function ComponentButtonApp() {
                     <Button type="outline" color='success'> Outline </Button>
                     <Button type="outline" color='warning'> Outline </Button>
                     <Button type="outline" color='danger'> Outline </Button>
+                </div>
+            </WrapperShadow>
+            <div className="mt-5"></div>
+            <WrapperShadow>
+                <h5 className="mb-5 text-lg font-medium text-slate-500">Loading</h5>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <Button type="outline" color="primary" loading iconLoading={(<CircleSpinner color={'#3b82f6'} size={16} />)}> Outline </Button>
                 </div>
             </WrapperShadow>
             <div className="mt-5"></div>

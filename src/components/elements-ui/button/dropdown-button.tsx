@@ -37,8 +37,6 @@ export default function DropdownButton({button, dropdownContent, contentClass}: 
     const componentRef = useRef<HTMLDivElement>()
     useOutsideComponent(componentRef, () => setClicked(false))
 
-   
-
     return (
         <div ref={componentRef} className="relative">
             <a role="button" onClick={()=>setClicked(!clicked)}>

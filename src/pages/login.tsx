@@ -1,5 +1,5 @@
-import Button from "@components/elements-ui/button";
 import { authActions, authSelector } from "@redux/auth.redux";
+import { Button } from "antd";
 import { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserLogin } from "src/models/user.model";
@@ -38,7 +38,7 @@ export default function LoginPage(){
                             <input onChange={onChange} value={form.password} className="outline-0 p-2 border rounded-md" type="password" name="password"  />
                         </div>
                         <div>
-                            <Button loading={isLoadingLogin} className="block w-full" size='md'> 
+                            <Button loading={isLoadingLogin}  type="primary" block> 
                                 <span>Đăng nhập</span>
                             </Button>
                         </div>

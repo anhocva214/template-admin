@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import store from 'src/redux/index';
 // import Alert from 'react-s-alert';
-
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
@@ -12,6 +11,9 @@ import '../resources/font-awesome6pro/css/all.min.css'
 import '../resources/styles/globals.css'
 import Toast from '@components/elements-ui/toast';
 import 'collapsible-react-component/dist/index.css'
+
+import 'antd/dist/reset.css';
+
 
 function App({ Component, pageProps }: AppProps) {
   return (

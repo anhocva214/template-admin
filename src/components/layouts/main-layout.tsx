@@ -8,14 +8,9 @@ import RouteSwitch from './route-switch';
 import DashboardPage from '@components/apps';
 import { settingActions, settingSelector } from 'src/redux/setting.redux';
 import SearchTopbar from '@components/elements-ui/input/search-topbar';
-import DropdownButton from '@components/elements-ui/button/dropdown-button';
 import NavMenu from '@components/elements-ui/menu/nav-menu';
 import { authActions, authSelector } from '@redux/auth.redux';
-import ComponentButtonApp from '@components/apps/button.app';
-import ComponentBadgeApp from '@components/apps/badge.app';
-import ComponentAlertApp from '@components/apps/alert.app';
-import ComponentAccordionApp from '@components/apps/accordion.app';
-import ComponentModalApp from '@components/apps/modal';
+import DropdownButton from '@components/elements-ui/button/dropdown-button';
 
 
 interface IProps {
@@ -167,12 +162,6 @@ export default function MainLayout({  }: IProps) {
 
                         {/* {children} */}
                         <RouteSwitch path={routesPath.dashboard} component={(<DashboardPage />)} />
-                        <RouteSwitch path={routesPath.componentsButton} component={(<ComponentButtonApp />)} />
-                        <RouteSwitch path={routesPath.componentsBadge} component={(<ComponentBadgeApp />)} />
-                        <RouteSwitch path={routesPath.componentsAlert} component={(<ComponentAlertApp />)} />
-                        <RouteSwitch path={routesPath.componentsAccordion} component={(<ComponentAccordionApp />)} />
-                        <RouteSwitch path={routesPath.componentsModal} component={(<ComponentModalApp />)} />
-                        
 
                     </div>
                     {/* END CONTENT */}
